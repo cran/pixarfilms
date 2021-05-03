@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<meta name="author" content="Eric Leung" />
+
+<meta name="date" content="2021-05-02" />
+
+<title>Pixar Film Ratings</title>
+
+<script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+
+<link rel="stylesheet" href="data:text/css,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" type="text/css" />
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Pixar Film Ratings</h1>
+<h4 class="author">Eric Leung</h4>
+<h4 class="date">2021-05-02</h4>
+
+
+
+<div id="overview" class="section level2">
+<h2>Overview</h2>
+<p>This vignette is to recreate an analysis on Pixar ratings that can be found <a href="https://pierrecom.github.io/Pixars%20Movies.html">here</a>.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pixarfilms)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Attaching package: &#39;dplyr&#39;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from &#39;package:stats&#39;:</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     filter, lag</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; The following objects are masked from &#39;package:base&#39;:</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(forcats)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<p>Their first plot was comparing the Pixar films’ ratings over time.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>public_response <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(film, rotten_tomatoes, metacritic) <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">film =</span> <span class="fu">fct_inorder</span>(film)) <span class="sc">%&gt;%</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;rotten_tomatoes&quot;</span>, <span class="st">&quot;metacritic&quot;</span>),</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;ratings&quot;</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratings =</span> <span class="fu">case_when</span>(</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    ratings <span class="sc">==</span> <span class="st">&quot;metacritic&quot;</span> <span class="sc">~</span> <span class="st">&quot;Metacritic&quot;</span>,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    ratings <span class="sc">==</span> <span class="st">&quot;rotten_tomatoes&quot;</span> <span class="sc">~</span> <span class="st">&quot;Rotten Tomatoes&quot;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">%&gt;%</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> film, <span class="at">y =</span> value, <span class="at">col =</span> ratings)) <span class="sc">+</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">group =</span> ratings)) <span class="sc">+</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Dark2&quot;</span>) <span class="sc">+</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Pixar film&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Rating value&quot;</span>) <span class="sc">+</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">col =</span> <span class="fu">guide_legend</span>(<span class="at">title =</span> <span class="st">&quot;Ratings&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>),</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) </span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 2 rows containing missing values (geom_point).</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 2 row(s) containing missing values (geom_path).</span></span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p><strong>Verdict</strong>: people and critics generally agree that Cars 2 was not as good as the other Pixar films.</p>
+<p>Next, let’s group the rating categories to see if there is a consistency across.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>public_response <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(film, rotten_tomatoes, metacritic) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">&quot;rotten_tomatoes&quot;</span>, <span class="st">&quot;metacritic&quot;</span>),</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">&quot;ratings&quot;</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;value&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ratings =</span> <span class="fu">case_when</span>(</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    ratings <span class="sc">==</span> <span class="st">&quot;metacritic&quot;</span> <span class="sc">~</span> <span class="st">&quot;Metacritic&quot;</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    ratings <span class="sc">==</span> <span class="st">&quot;rotten_tomatoes&quot;</span> <span class="sc">~</span> <span class="st">&quot;Rotten Tomatoes&quot;</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">%&gt;%</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> ratings, <span class="at">y =</span> value, <span class="at">col =</span> ratings)) <span class="sc">+</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  ggbeeswarm<span class="sc">::</span><span class="fu">geom_beeswarm</span>() <span class="sc">+</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  ggrepel<span class="sc">::</span><span class="fu">geom_text_repel</span>(<span class="at">data =</span> . <span class="sc">%&gt;%</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>                             <span class="fu">filter</span>(film <span class="sc">==</span> <span class="st">&quot;Cars 2&quot;</span> ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>                             <span class="fu">filter</span>(ratings <span class="sc">==</span> <span class="st">&quot;Rotten Tomatoes&quot;</span>),</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>                           <span class="fu">aes</span>(<span class="at">label =</span> film),</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>                           <span class="at">point.padding =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">&quot;Dark2&quot;</span>) <span class="sc">+</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">col =</span> <span class="fu">guide_legend</span>(<span class="at">title =</span> <span class="st">&quot;Ratings&quot;</span>)) <span class="sc">+</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Rating group&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Rating value&quot;</span>) <span class="sc">+</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">100</span>)) <span class="sc">+</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&quot;bottom&quot;</span>) </span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 2 rows containing non-finite values (stat_boxplot).</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning: Removed 2 rows containing missing values (position_beeswarm).</span></span></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p><strong>Verdict</strong>: people at Rotten Tomatoes generally like Pixar films more than Metacritic, for the exception of Cars 2.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sessionInfo</span>()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; R version 3.6.1 (2019-07-05)</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Platform: x86_64-w64-mingw32/x64 (64-bit)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Running under: Windows 10 x64 (build 17134)</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Matrix products: default</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; locale:</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] LC_COLLATE=C                          </span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2] LC_CTYPE=English_United States.1252   </span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3] LC_MONETARY=English_United States.1252</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4] LC_NUMERIC=C                          </span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5] LC_TIME=English_United States.1252    </span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; attached base packages:</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; other attached packages:</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] ggplot2_3.3.2    forcats_0.5.0    tidyr_1.1.2      dplyr_1.0.5     </span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5] pixarfilms_0.2.0</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [1] Rcpp_1.0.5         vipor_0.4.5        pillar_1.4.6       compiler_3.6.1    </span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [5] RColorBrewer_1.1-2 tools_3.6.1        digest_0.6.27      evaluate_0.14     </span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  [9] lifecycle_1.0.0    tibble_3.0.4       gtable_0.3.0       pkgconfig_2.0.3   </span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [13] rlang_0.4.10       DBI_1.1.0          ggrepel_0.8.2      yaml_2.2.1        </span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [17] beeswarm_0.3.1     xfun_0.16          withr_2.4.1        stringr_1.4.0     </span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [21] knitr_1.29         generics_0.1.0     vctrs_0.3.7        grid_3.6.1        </span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [25] tidyselect_1.1.0   glue_1.4.2         R6_2.4.1           ggbeeswarm_0.6.0  </span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [29] rmarkdown_2.7      purrr_0.3.4        farver_2.0.3       magrittr_1.5      </span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [33] scales_1.1.1       ellipsis_0.3.1     htmltools_0.5.0    assertthat_0.2.1  </span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [37] colorspace_1.4-1   labeling_0.3       stringi_1.4.6      munsell_0.5.0     </span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [41] crayon_1.3.4</span></span></code></pre></div>
+</div>
+
+
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

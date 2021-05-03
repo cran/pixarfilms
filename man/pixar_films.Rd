@@ -10,10 +10,15 @@ A data frame with 27 rows and 3 variables:
 \item{number}{order of release}
 \item{film}{name of film}
 \item{release_date}{date film premiered}
+\item{run_time}{film length in minutes}
+\item{film_rating}{rating based on Motion Picture Association (MPA) film
+rating system}
 }
 }
 \source{
 \url{https://en.wikipedia.org/wiki/List_of_Pixar_films}
+
+\url{https://www.omdbapi.com}
 }
 \usage{
 pixar_films

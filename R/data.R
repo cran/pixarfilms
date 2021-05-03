@@ -11,8 +11,12 @@ NULL
 #'   \item{number}{order of release}
 #'   \item{film}{name of film}
 #'   \item{release_date}{date film premiered}
+#'   \item{run_time}{film length in minutes}
+#'   \item{film_rating}{rating based on Motion Picture Association (MPA) film
+#'   rating system}
 #' }
 #' @source \url{https://en.wikipedia.org/wiki/List_of_Pixar_films}
+#' @source \url{https://www.omdbapi.com}
 #' @examples
 #' pixar_films
 "pixar_films"
