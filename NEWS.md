@@ -1,3 +1,9 @@
+# pixarfilms 0.2.1
+
+* Fix for R CMD check change
+* Tidy DESCRIPTION film
+* Add words to ignore list when spell checking
+
 # pixarfilms 0.2.0
 
 * Add vignette for Pixar film ratings

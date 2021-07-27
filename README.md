@@ -34,11 +34,16 @@ and SQL.
 
 ## Installation
 
-``` r
-# Install from CRAN
-install.packages("pixarfilms")
+Install `pixarfilms` from CRAN:
 
-# Install directly from GitHub
+``` r
+install.packages("pixarfilms")
+```
+
+Or you can install the development version of `pixarfilms` from GitHub
+with:
+
+``` r
 remotes::install_github("erictleung/pixarfilms")
 ```
 
@@ -62,3 +67,55 @@ pixar_films
 #> 10 10     Up              2009-05-29         96 PG         
 #> # ... with 17 more rows
 ```
+
+## Documentation
+
+You can find information about the data sets and more
+[here](https://erictleung.com/pixarfilms/). The official CRAN release
+page can be found [here](https://cran.r-project.org/package=pixarfilms).
+
+## Data
+
+This data here within is not constrained to exploring just within R.
+
+Here are other accessible means of using this data.
+
+-   Through [your
+    browser](https://pixarfilms-datasette.herokuapp.com/pixarfilms)
+    using datasette and a SQLite database (located at
+    `/data-raw/pixarfilms.db`).
+-   Through CSV files found within the `data-raw/` directory.
+
+Here are direct links to each data set.
+
+    https://raw.githubusercontent.com/erictleung/pixarfilms/master/data-raw/academy.csv
+    https://raw.githubusercontent.com/erictleung/pixarfilms/master/data-raw/box_office.csv
+    https://raw.githubusercontent.com/erictleung/pixarfilms/master/data-raw/genres.csv
+    https://raw.githubusercontent.com/erictleung/pixarfilms/master/data-raw/pixar_films.csv
+    https://raw.githubusercontent.com/erictleung/pixarfilms/master/data-raw/pixar_people.csv
+    https://raw.githubusercontent.com/erictleung/pixarfilms/master/data-raw/public_response.csv
+
+There’s also a `datapackage.json` file (located at
+`/data-raw/datapackage.json`) to be a computer-readable data dictionary
+describing the contents of each data file as described in [the data
+package
+specifications](https://specs.frictionlessdata.io/data-package/).
+
+## Feedback
+
+If you have any feedback or suggestions on other data that can be added,
+please file an issue
+[here](https://github.com/erictleung/pixarfilms/issues).
+
+## Code of Conduct
+
+Please note that the {pixarfilms} project is released with a
+[Contributor Code of
+Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
+
+## Acknowledgments
+
+-   [Wikipedia](https://www.wikipedia.org)
+-   [OMDb API](https://www.omdbapi.com/)
+-   [babynames](https://github.com/hadley/babynames) (for inspiration)

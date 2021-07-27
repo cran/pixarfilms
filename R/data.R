@@ -66,7 +66,7 @@ NULL
 #'
 #' A data set with financial and box office gross numbers for each film.
 #'
-#' @format A data frame with 23 rows and 5 variables:
+#' @format A data frame with 24 rows and 5 variables:
 #' \describe{
 #'   \item{film}{name of film}
 #'   \item{budget}{movie budget in U.S. dollars}
@@ -106,9 +106,10 @@ NULL
 "public_response"
 
 
-#' Pixar awards and nominations
+#' Pixar Academy awards and nominations
 #'
-#' A data set with the awards and nominations each Pixar film has won.
+#' A data set with the awards and nominations of the Academy Awards, popularly
+#' known as the Oscars, each Pixar film has won.
 #'
 #' This data set is put into a tidy format, where each row is a film-award data
 #' point.
